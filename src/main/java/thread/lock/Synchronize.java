@@ -11,9 +11,10 @@ import static thread.pool.ThreadPool.getExecutorService;
 public class Synchronize {
 
     public static void main(String[] args) {
-        Synchronize synchronize =new Synchronize();
+        Synchronize synchronize = new Synchronize();
         synchronize.test1();
     }
+
     public void test1() {
         long startTime = System.currentTimeMillis();
         ExecutorService executorService = Executors.newFixedThreadPool(10);
