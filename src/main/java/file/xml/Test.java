@@ -18,7 +18,7 @@ public class Test {
         Document doc = null;
         try {
             SAXReader reader = new SAXReader();
-            doc = reader.read(new File("/Users/zhangheqi/Java/my_demo_list/src/main/resources/" + filename));
+            doc = reader.read(new File(""));
         } catch (Exception e) {
             e.printStackTrace();
         }
