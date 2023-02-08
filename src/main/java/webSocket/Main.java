@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
- * @author Zhang.hq
+ * @author hq7733
  * @date 2023/2/6
  */
 public class Main {

@@ -8,7 +8,7 @@ import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 
 /**
- * @author Zhang.hq
+ * @author hq7733
  * @date 2023/2/6
  */
 public class SocketServer extends WebSocketServer {
