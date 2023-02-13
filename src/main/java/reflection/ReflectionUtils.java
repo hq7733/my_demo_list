@@ -25,7 +25,7 @@ public class ReflectionUtils {
 
 
     public static <T, S, R> void setFiledValue(T t, SFunction<S, R> action, Object value) {
-        String fieldName = (String) Optional.ofNullable(getFiledName(action)).orElse("");
+        String fieldName = Optional.ofNullable(getFiledName(action)).orElse("");
 
         try {
             Field field = t.getClass().getDeclaredField(fieldName);
@@ -37,7 +37,7 @@ public class ReflectionUtils {
     }
 
     public static <T, R> R getFiledValue(T t, SFunction<T, R> action) {
-        String fieldName = (String) Optional.ofNullable(getFiledName(action)).orElse("");
+        String fieldName = Optional.ofNullable(getFiledName(action)).orElse("");
         Field field = null;
 
         try {
