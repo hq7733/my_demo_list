@@ -72,4 +72,38 @@ public class ReflectionUtils {
                 str.substring(3) : str.startsWith("is") ? str.substring(2) : str;
         return fieldName.substring(0, 1).toLowerCase() + fieldName.substring(1);
     }
+
+    public static <T> Object invokeMethodPrivate(Class<T> classObject, Object o, String methodName, Class[] parameterTypes, Object[] parameters) {
+        return invokeMethod(classObject, o, methodName, parameterTypes, parameters);
+    }
+
+    private static <T> Object invokeMethod(Class<T> classObject, Object o, String methodName, Class[] parameterTypes, Object[] parameters) {
+        if (parameterTypes == null) {
+            parameterTypes = new Class[0];
+        }
+        if (parameters == null) {
+            parameters = new Object[0];
+        }
+        if (parameterTypes.length != parameters.length) {
+            throw new RuntimeException("参数类型和参数数量不一致");
+        }
+
+        try {
+            Method method = classObject.getDeclaredMethod(methodName, parameterTypes);
+            method.setAccessible(true);
+            return method.invoke(o, parameters);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException("方法不存在:" + methodName);
+        } catch (Exception e) {
+            throw new RuntimeException(classObject.getName() + "类不存在" + methodName + "方法");
+        }
+    }
+
+    public static <T> Object invokeMethodStatic(Class<T> classObject, String methodName, Class[] parameterTypes, Object[] parameters) {
+        return invokeMethodPrivate(classObject, null, methodName, parameterTypes, parameters);
+    }
+
+    public static <T> boolean instanceofClass(Class clazz, T obj) {
+        return clazz.isInstance(obj);
+    }
 }

@@ -11,4 +11,8 @@ public class Student {
     private String id;
     private String name;
     private String age;
+
+    private static String test() {
+        return "调用成功";
+    }
 }

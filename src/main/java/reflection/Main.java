@@ -10,9 +10,7 @@ public class Main {
         student.setId("1");
         student.setName("hq7733");
         student.setId("18");
-        ReflectionUtils.setFiledValue(student,Student::getName,"zhang san");
-        String name = ReflectionUtils.getFiledName(Student::getName);
-        System.out.println(name);
-        System.out.println(student.getName());
+        String s = (String) ReflectionUtils.invokeMethodStatic(Student.class, "test", null, null);
+        System.out.println(s);
     }
 }
